@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hacking Grid</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="game-wrapper">
+    <div class="top-left-label">HACKING.EXE</div>
+    <div class="window-controls">
+      <span class="icon">-</span>
+      <span class="icon">□</span>
+      <span class="icon">X</span>
+    </div>
+    <div class="container">
+      
+      <div id="grid" class="grid"></div>
+
+      <div id="progress-wrapper">
+        <div id="progress-percentage">0%</div>
+      </div>
+      <div id="progress-container">
+        <div id="progress-bar"></div>
+      </div>
+
+    </div>
+    <!-- Ekran porażki -->
+  <div id="failure-screen" class="hidden">
+    <div class="failure-content">
+<img src="img/clownhat.png" alt="👾" class="logo" />
+      <div class="failure-label">[HACK NIEUDANY]</div>
+    </div>
+  </div>
+    <!-- Ekran sukcesu -->
+  <div id="success-screen" class="hidden">
+    <div class="success-content">
+<img src="img/clownhat.png" alt="👾" class="logo" />
+      <div class="success-label">[HACK UDANY]</div>
+    </div>
+  </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
