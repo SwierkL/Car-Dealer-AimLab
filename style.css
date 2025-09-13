@@ -194,3 +194,8 @@ body {
 #restart-button:hover {
   background-color: #00cc7a;
 }
+.failure-score {
+  font-size: 18px;
+  color: #00ffae;
+  margin-top: 10px;
+}

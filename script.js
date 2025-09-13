@@ -86,8 +86,10 @@ function showFailure() {
   gameOver = true;
 
   document.querySelector(".container").classList.add("hidden");
-
   document.getElementById("failure-screen").classList.remove("hidden");
+
+  const failureScore = document.getElementById("failure-score");
+  failureScore.textContent = `Trafione kwadraty: ${score} / ${requiredClicks}`;
 
   activeCells.forEach((timeout, index) => {
     clearTimeout(timeout);
@@ -95,6 +97,7 @@ function showFailure() {
   });
   activeCells.clear();
 }
+
 
 function restartGame() {
   gameOver = false;
