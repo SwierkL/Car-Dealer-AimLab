@@ -11,6 +11,7 @@ const progressPercentage = document.getElementById("progress-percentage");
 let activeCells = new Map(); // indeksy i timeouty
 let gameOver = false;
 let score = 0;
+let lastActivatedTimes = new Map(); // klucz: index, wartość: timestamp w ms
 
 
 
@@ -57,24 +58,39 @@ function updateProgressBar() {
 function activateRandomCell() {
   if (gameOver) return;
 
+  const now = Date.now();
   const cells = document.querySelectorAll(".cell");
-  const randomIndex = Math.floor(Math.random() * totalCells);
+
+  const availableIndexes = [];
+
+  for (let i = 0; i < totalCells; i++) {
+    if (activeCells.has(i)) continue; // już aktywna
+
+    const lastTime = lastActivatedTimes.get(i) || 0;
+    if (now - lastTime >= 1000) {
+      availableIndexes.push(i);
+    }
+  }
+
+  if (availableIndexes.length === 0) return; // brak dostępnych komórek
+
+  const randomIndex = availableIndexes[Math.floor(Math.random() * availableIndexes.length)];
   const cell = cells[randomIndex];
 
-  // Jeżeli już aktywny to pomijam
-  if (activeCells.has(randomIndex)) return;
+  // Oznacz jako aktywowaną teraz
+  lastActivatedTimes.set(randomIndex, now);
 
   cell.classList.add("active");
-
 
   const timeout = setTimeout(() => {
     if (!gameOver && activeCells.has(randomIndex)) {
       showFailure();
     }
-  }, 2000);  // 10 sekund na kliknięcie
+  }, 2000); // czas na kliknięcie
 
   activeCells.set(randomIndex, timeout);
 }
+
 
 function startGameLoop() {
   setInterval(() => {
@@ -106,10 +122,10 @@ function restartGame() {
   gameOver = false;
   score = 0;
   activeCells.clear();
+  lastActivatedTimes.clear();
   progressBar.style.width = "0%";
   progressPercentage.textContent = "0%";
 
-  // Usuwanie klas
   document.querySelectorAll(".cell").forEach(cell => {
     cell.classList.remove("active");
   });
@@ -118,6 +134,7 @@ function restartGame() {
   document.getElementById("success-screen").classList.add("hidden");
   document.getElementById("failure-screen").classList.add("hidden");
 }
+
 
 
 
