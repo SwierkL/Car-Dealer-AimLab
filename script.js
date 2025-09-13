@@ -67,7 +67,7 @@ function activateRandomCell() {
     if (activeCells.has(i)) continue; // już aktywna
 
     const lastTime = lastActivatedTimes.get(i) || 0;
-    if (now - lastTime >= 1000) {
+    if (now - lastTime >= 3000) {
       availableIndexes.push(i);
     }
   }
