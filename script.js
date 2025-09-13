@@ -77,7 +77,7 @@ function activateRandomCell() {
   const randomIndex = availableIndexes[Math.floor(Math.random() * availableIndexes.length)];
   const cell = cells[randomIndex];
 
-  // Oznacz jako aktywowaną teraz
+
   lastActivatedTimes.set(randomIndex, now);
 
   cell.classList.add("active");
