@@ -67,7 +67,7 @@ function activateRandomCell() {
     if (activeCells.has(i)) continue; // już aktywna
 
     const lastTime = lastActivatedTimes.get(i) || 0;
-    if (now - lastTime >= 1000) {
+    if (now - lastTime >= 500) {
       availableIndexes.push(i);
     }
   }
@@ -95,7 +95,7 @@ function activateRandomCell() {
 function startGameLoop() {
   setInterval(() => {
     activateRandomCell();
-  }, 100); //Tempo pojawiania się
+  }, 300); //Tempo pojawiania się
 }
 
 function showFailure() {
