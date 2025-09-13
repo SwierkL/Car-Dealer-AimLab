@@ -181,3 +181,17 @@ body {
   color: #00ffae;
   font-weight: bold;
 }
+#restart-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #00ffae;
+  color: #0e1c1f;
+  border: none;
+  font-weight: bold;
+  font-family: monospace;
+  border-radius: 6px;
+  cursor: pointer;
+}
+#restart-button:hover {
+  background-color: #00cc7a;
+}

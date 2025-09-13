@@ -1,7 +1,7 @@
 const grid = document.getElementById("grid");
 const message = document.getElementById("message");
 const gridSize = 7;
-const requiredClicks = 34; // Wymagane poprawne kwadraciki
+const requiredClicks = 57; // Wymagane poprawne kwadraciki
 const totalCells = gridSize * gridSize;
 const progressBar = document.getElementById("progress-bar");
 const progressPercentage = document.getElementById("progress-percentage");
@@ -71,7 +71,7 @@ function activateRandomCell() {
     if (!gameOver && activeCells.has(randomIndex)) {
       showFailure();
     }
-  }, 10000);  // 10 sekund na kliknięcie
+  }, 2000);  // 10 sekund na kliknięcie
 
   activeCells.set(randomIndex, timeout);
 }
@@ -96,6 +96,22 @@ function showFailure() {
   activeCells.clear();
 }
 
+function restartGame() {
+  gameOver = false;
+  score = 0;
+  activeCells.clear();
+  progressBar.style.width = "0%";
+  progressPercentage.textContent = "0%";
+
+  // Usuwanie klas
+  document.querySelectorAll(".cell").forEach(cell => {
+    cell.classList.remove("active");
+  });
+
+  document.querySelector(".container").classList.remove("hidden");
+  document.getElementById("success-screen").classList.add("hidden");
+  document.getElementById("failure-screen").classList.add("hidden");
+}
 
 
 
