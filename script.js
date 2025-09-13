@@ -1,5 +1,4 @@
 const grid = document.getElementById("grid");
-const message = document.getElementById("message");
 const gridSize = 7;
 const requiredClicks = 57; // Wymagane poprawne kwadraciki
 const totalCells = gridSize * gridSize;
