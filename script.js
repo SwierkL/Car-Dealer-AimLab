@@ -95,7 +95,7 @@ function activateRandomCell() {
 function startGameLoop() {
   setInterval(() => {
     activateRandomCell();
-  }, 500); //Tempo pojawiania się
+  }, 300); //Tempo pojawiania się
 }
 
 function showFailure() {
